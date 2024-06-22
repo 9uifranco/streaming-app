@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  laravel:
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/var/www
+    networks:
+      - my-network
+    expose:
+      - "80"
+
+  react:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"
+    networks:
+      - my-network
+
+   nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - laravel
+      - react
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
