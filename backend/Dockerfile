@@ -36,12 +36,6 @@ RUN composer run-script post-install-cmd
 # Set folder permissions (if needed)
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Remove the default Nginx configuration file
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Copy custom Nginx config file
-COPY nginx.conf /etc/nginx/nginx.conf
-
 # Expose port 80
 EXPOSE 80
 
