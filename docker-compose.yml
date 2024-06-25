@@ -19,7 +19,7 @@ services:
     networks:
       - my-network
 
-   nginx:
+  nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile

@@ -22,8 +22,14 @@
     cd streaming-app
     ```
 
-5. **Run the Setup Script**: Make the setup script executable and execute it to start the application:
+
+5. **Enable and Start Docker Service**:
     ```sh
-    chmod +x setup.sh
-    ./setup.sh
+    sudo systemctl enable docker
+    sudo systemctl start docker
+    ```
+
+6. **Build and Start the Docker Containers**:
+    ```sh
+    docker compose up --build -d
     ```
